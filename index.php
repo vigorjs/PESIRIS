@@ -119,7 +119,7 @@ require 'cek.php';
                                                 $idb = $data['idbarang'];
                                                                                              
                                                 //generate qr
-                                                $url = "http://localhost/siap/detail.php?id=".$idb;
+                                                $url = "https://pesiris.azurewebsites.net/detail.php?id=".$idb;
                                                 $qrcode = "https://chart.googleapis.com/chart?chs=350x350&cht=qr&chl=".$url."&choe=UTF-8";
 
                                                 //cek ada gambar atau tidak
