@@ -1,7 +1,7 @@
 <?php
 session_start();
 //koneksi database
-$conn = mysqli_connect('localhost','root','','stockbarang');
+$conn = mysqli_connect('pesiris-server.database.windows.net','pesiris-server-admin','Batassuci123','stockbarang');
 
 //tambah barang baru
 if(isset($_POST['addnewbarang'])){
