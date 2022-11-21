@@ -46,7 +46,7 @@ require 'cek.php';
                                                 $idb = $data['idbarang'];
 
                                                 //generate qr
-                                                $url = "http://localhost/inventaris/detail.php?id=".$idb;
+                                                $url = "https://pesiris.azurewebsites.net/detail.php?id=".$idb;
                                                 $qrcode = "https://chart.googleapis.com/chart?chs=120x120&cht=qr&chl=".$url."&choe=UTF-8";
                                             ?>
                                             <tr>
