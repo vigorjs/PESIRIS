@@ -160,6 +160,8 @@ require 'cek.php';
                                                 <br>
                                                 <input type="text" name="keterangan" value="<?=$keterangan;?>" placeholder="Penerima" class="form-control" required>
                                                 <br>
+                                                <input type="text" name="penyerah" value="<?=$penyerah;?>" placeholder="Penyerah" class="form-control" required>
+                                                <br>
                                                 <input type="text" name="qty" value="<?=$qty;?>" placeholder="Jumlah" class="form-control" required>
                                                 <input type="hidden" name="idb" value="<?=$idb;?>">
                                                 <input type="hidden" name="idm" value="<?=$idm;?>">
@@ -273,6 +275,8 @@ require 'cek.php';
         </select>
         <br>
         <input type="text" name="penerima" placeholder="Penerima" class="form-control" required>
+        <br>
+        <input type="text" name="penyerah" placeholder="Penyerah" class="form-control" required>
         <br>
         <input type="number" name="qty" placeholder="Quantity" class="form-control" required>
         </div>
