@@ -159,9 +159,9 @@ require 'cek.php';
                                                 <td><?=$penerima;?></td>
                                                 <td><?=$qty;?></td>
                                                 <td>
-                                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?=$idb;?>"> <i class="fa fa-edit"> </i></#>
+                                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?=$idk;?>"> <i class="fa fa-edit"> </i></#>
                                                     </button>
-                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?=$idb;?>"> <i class="fa fa-trash"> </i></#>
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?=$idk;?>"> <i class="fa fa-trash"> </i></#>
                                                     </button>
                                                 </td>
                                                 
