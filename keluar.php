@@ -113,6 +113,7 @@ require 'cek.php';
                                                 <th>Gambar</th>
                                                 <th>Nama Barang</th>
                                                 <th>Penerima</th>
+                                                <th>Penyerah</th>
                                                 <th>Qty</th>
                                                 <th>Aksi</th>
                                             </tr>
@@ -141,6 +142,7 @@ require 'cek.php';
                                                 $namabarang = $data['namabarang'];
                                                 $qty = $data['qty'];
                                                 $penerima = $data['penerima'];
+                                                $penyerah = $data['penyerah'];
 
                                                 //cek ada gambar atau tidak
                                                 $gambar = $data['image'];//ambil gambar
@@ -157,6 +159,7 @@ require 'cek.php';
                                                 <td><?=$img;?></td>
                                                 <td><?=$namabarang;?></td>
                                                 <td><?=$penerima;?></td>
+                                                <td><?=$penyerah;?></td>
                                                 <td><?=$qty;?></td>
                                                 <td>
                                                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?=$idk;?>"> <i class="fa fa-edit"> </i></#>
@@ -184,6 +187,8 @@ require 'cek.php';
                                                 <input type='text' name='namabarang' value="<?=$namabarang;?>" placeholder="Nama Barang" class='form-control' required>
                                                 <br>
                                                 <input type="text" name="penerima" value="<?=$penerima;?>" placeholder="Penerima" class="form-control" required>
+                                                <br>
+                                                <input type="text" name="penyerah" value="<?=$penyerah;?>" placeholder="Penyerah" class="form-control" required>
                                                 <br>
                                                 <input type="text" name="qty" value="<?=$qty;?>" placeholder="Jumlah" class="form-control" required>
                                                 <input type="hidden" name="idb" value="<?=$idb;?>">
@@ -296,6 +301,8 @@ require 'cek.php';
         </select>
         <br>
         <input type="text" name="penerima" placeholder="Penerima" class="form-control" required>
+        <br>
+        <input type="text" name="penyerah" placeholder="Penyerah" class="form-control" required>
         <br>
         <input type="number" name="qty" placeholder="Quantity" class="form-control" required>
         <input type="hidden" name="idb" value="<?=$idb;?>">
