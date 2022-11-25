@@ -142,7 +142,7 @@ require 'cek.php';
                                                 <td>
                                                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?=$idb;?>"> <i class="fa fa-edit"> </i></#>
                                                     </button>
-                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?=$idb;?>"> <i class="fa fa-delete"> </i></#>
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?=$idb;?>"> <i class="fa fa-trash"> </i></#>
                                                     </button>
                                                 </td>
                                             </tr>
