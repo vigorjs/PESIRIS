@@ -140,11 +140,9 @@ require 'cek.php';
                                                 <td><?=$stock;?></td>
                                                 <td><img src="<?=$qrcode;?>" class="zoomable"></td>
                                                 <td>
-                                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?=$idb;?>">
-                                                    Edit
+                                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?=$idb;?>"> <i class="fa fa-edit"> </i></#>
                                                     </button>
-                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?=$idb;?>">
-                                                    Delete
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?=$idb;?>"> <i class="fa fa-delete"> </i></#>
                                                     </button>
                                                 </td>
                                             </tr>
