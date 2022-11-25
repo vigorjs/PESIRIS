@@ -159,11 +159,9 @@ require 'cek.php';
                                                 <td><?=$penerima;?></td>
                                                 <td><?=$qty;?></td>
                                                 <td>
-                                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?=$idk;?>">
-                                                        <i class="fa fa-edit"> </i>
+                                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?=$idk;?>"> <i class="fa fa-edit"> </i></#>
                                                     </button>
-                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?=$idk;?>">
-                                                        <i class="fa fa-trash"> </i>
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?=$idk;?>"> <i class="fa fa-trash"> </i></#>
                                                     </button>
                                                 </td>
                                                 
@@ -187,7 +185,7 @@ require 'cek.php';
                                                 <br>
                                                 <input type="text" name="penerima" value="<?=$penerima;?>" placeholder="Penerima" class="form-control" required>
                                                 <br>
-                                                <input type="text" name="qty" value="<?=$qty;?>" placeholder="Penerima" class="form-control" required>
+                                                <input type="text" name="qty" value="<?=$qty;?>" placeholder="Jumlah" class="form-control" required>
                                                 <input type="hidden" name="idb" value="<?=$idb;?>">
                                                 <input type="hidden" name="idk" value="<?=$idk;?>">
                                                 </div>
