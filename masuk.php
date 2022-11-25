@@ -131,9 +131,11 @@ require 'cek.php';
                                                 <td><?=$keterangan;?></td>
                                                 <td><?=$qty;?></td>
                                                 <td>
-                                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?=$idm;?>"> <i class="fa fa-edit"> </i></#>
+                                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?=$idm;?>">
+                                                        <i class="fa fa-edit"></i>
                                                     </button>
-                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?=$idm;?>"> <i class="fa fa-trash"> </i></#>
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?=$idm;?>">
+                                                        <i class="fa fa-trash"></i>
                                                     </button>
                                                 </td>
                                             </tr>
