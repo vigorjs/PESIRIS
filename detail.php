@@ -247,6 +247,8 @@ if($gambar==null){
         <br>
         <input type="text" name="penerima" placeholder="Penerima" class="form-control" required>
         <br>
+        <input type="text" name="penyerah" placeholder="Penyerah" class="form-control" required>
+        <br>
         <input type="number" name="qty" placeholder="Quantity" class="form-control" required>
         </div>
     
@@ -291,6 +293,8 @@ if($gambar==null){
         </select>
         <br>
         <input type="text" name="penerima" placeholder="Penerima" class="form-control" required>
+        <br>
+        <input type="text" name="penyerah" placeholder="Penyerah" class="form-control" required>
         <br>
         <input type="number" name="qty" placeholder="Quantity" class="form-control" required>
         <input type="hidden" name="idb" value="<?=$idb;?>">
