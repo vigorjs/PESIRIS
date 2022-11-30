@@ -26,53 +26,70 @@ if(!isset($_SESSION['log'])){
     header('location:index.php');
 }
 ?>
+<!doctype html>
+<html lang="en" class="fullscreen-bg">
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Login Page</title>
-        <link href="assets/img/logoa.png" rel="shortcut icon">
-        <link href="css/styles.css" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
-    </head>
-    <body class="bg-primary">
-        <div id="layoutAuthentication">
-            <div id="layoutAuthentication_content">
-                <main>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-5">
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
-                                    <div class="card-body">
-                                        <form method = 'post'>
-                                            <div class="form-group">
-                                                <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                                <input class="form-control py-4" id="inputEmailAddress" name="email" type="email" placeholder="Enter email address" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="small mb-1" for="inputPassword">Password</label>
-                                                <input class="form-control py-4" id="inputPassword" name="password" type="password" placeholder="Enter password" />
-                                            </div>
-                                            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <button class="btn btn-primary" href="index.html" name="login" >Login</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </main>
-            </div>
-        </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-    </body>
+<head>
+<title>LOGIN PT. PEGADAIAN</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="assets/css/demo.css">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/logo2.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/logo2.png">
+</head>
+
+<body>
+	<!-- WRAPPER -->
+	<div id="wrapper">
+		<div class="vertical-align-wrap">
+			<div class="vertical-align-middle">
+				<div class="auth-box ">
+					<div class="left">
+						<div class="content">
+							<div class="header">
+								<p class="lead">LOGIN</p>
+							</div>
+							<form action="login.php" method="post" enctype="multipart/form-data">
+								<div class="form-group">
+									<label for="signin-email" class="control-label sr-only">Email</label>
+									<input type="text" name="email" class="form-control" placeholder="email" required>
+								</div>
+								<div class="form-group">
+									<label for="signin-password" class="control-label sr-only">Password</label>
+									<input type="password" name="password" class="form-control" placeholder="password" required>
+								</div>
+								<p>Belum punya akun? <a href="signup.php">Daftar</a></p>
+								<input type="submit" name="login" class="btn btn-primary btn-lg btn-block" value="LOGIN">
+							</form>
+							<br>
+							<center>
+								<p>Created By Magenta </p>
+							</center>
+						</div>
+					</div>
+				  <div class="right">
+						<div class="overlay"></div>
+						<div class="content text text-center">
+						  <img src="assets/img/logo2.png" alt="logo-icon" width="268" height="136">
+						  <img src="assets/img/logoa.png" alt="logo-icon" width="140px" height="140px">
+						  <p>Scan QR untuk cek persediaan barang</p>
+							<br>
+							
+							<h1 class="heading">PEGADAIAN SISTEM INVENTARIS</h1>
+
+						</div>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END WRAPPER -->
+</body>
+
 </html>
