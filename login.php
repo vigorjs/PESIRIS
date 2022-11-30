@@ -44,7 +44,7 @@ if(!isset($_SESSION['log'])){
 	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/logo2.png">
 </head>
 
-<body>
+<body background='assets/img/Screenshot (133).png'>
 	<!-- WRAPPER -->
 	<div id="wrapper">
 		<div class="vertical-align-wrap">
