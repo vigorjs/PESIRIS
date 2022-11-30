@@ -20,6 +20,7 @@ html {
   min-height: 100%; }
 
 body {
+  background : auto;
   background-color: #F3F5F8;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 15px;
