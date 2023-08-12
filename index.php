@@ -1,6 +1,9 @@
 <?php
 require 'function.php';
 require 'cek.php';
+if(isset($_SESSION['user_id'])){
+    $user_logged = mysqli_fetch_array((mysqli_query($conn, "SELECT * FROM login WHERE iduser='$_SESSION[user_id]'")));   
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,16 +34,26 @@ require 'cek.php';
         </style>
     </head>
     <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark justify-content-between">
+        <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i>
             <a class="navbar-brand" href="index.php">PESIRIS</a>
-        </nav>
+        </button>
+        <?php
+            if(isset($_SESSION['user_id'])){
+        ?>
+            <span class="navbar-text">
+                Hallo, <?= $user_logged['email'] ?>
+            </span>
+        <?php
+            }
+        ?>
+    </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                        <img class="image" src="assets\img\logo2.png"  width="150px" style="margin: 1px;padding: 0px color:dark;">
+                        <img class="image" src="assets\img\logo2.png"  width="150px" style="margin: 1px;padding: 0px; color: dark;">
                             <a class="nav-link" href="index.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Stock Barang

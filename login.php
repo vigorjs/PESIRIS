@@ -11,8 +11,10 @@ if(isset($_POST['login'])){
     $hitung = mysqli_num_rows($cekdatabase);
 
     if($hitung>0){
-
         $_SESSION['log'] = 'True';
+		$data = mysqli_fetch_array($cekdatabase);
+
+        $_SESSION['user_id'] = $data['iduser'];
         header('location:index.php');
     } else{
         header('location:login.php');

@@ -3,8 +3,6 @@ session_start();
 //koneksi database
 $conn = mysqli_connect('localhost','root','','stockbarang');
 
-
-
 //tambah barang baru
 if(isset($_POST['addnewbarang'])){
     $namabarang = $_POST['namabarang'];

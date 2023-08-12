@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 04, 2023 at 08:51 PM
+-- Generation Time: Aug 12, 2023 at 09:42 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -85,7 +85,8 @@ CREATE TABLE `masuk` (
 --
 
 INSERT INTO `masuk` (`idmasuk`, `idbarang`, `tanggal`, `keterangan`, `penyerah`, `qty`) VALUES
-(31, 67, '2023-05-15 21:38:01', 'Towud', 'Bu Ning', 50);
+(31, 67, '2023-05-15 21:38:01', 'Towud', 'Bu Ning', 50),
+(33, 69, '2023-08-12 06:09:51', 'Kantor Cabang Kebumen', 'Bu Ning', 10);
 
 -- --------------------------------------------------------
 
@@ -107,8 +108,9 @@ CREATE TABLE `stock` (
 
 INSERT INTO `stock` (`idbarang`, `namabarang`, `deskripsi`, `stock`, `image`) VALUES
 (65, 'Brosur KUR', 'Marketing Kit', 100, 'b18affd703221cf977be17c0ceb9c55b.png'),
-(67, 'Payung', 'Marketing KIT', 100, '48f288f7c4c909aa339baf860128b88e.jpg'),
-(68, 'Kaos', 'Marketing KIT', 60, 'c97ad007ef458dd3fcae22a5ecc0fa92.jpg');
+(67, 'Payung', 'Marketing KIT', 100, '5a682186e49eb3c8677c45eb5c3e76e6.jpeg'),
+(68, 'Kaos', 'Marketing KIT', 60, 'e8046b27af2be091f8d72bdd4b73fd11.jpg'),
+(69, 'Banner', 'Marketing KIT', 15, 'e05a7e26d8ca3e920c7d16f0f99f05fd.jpg');
 
 --
 -- Indexes for dumped tables
@@ -160,13 +162,13 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `masuk`
 --
 ALTER TABLE `masuk`
-  MODIFY `idmasuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `idmasuk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `idbarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `idbarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- Constraints for dumped tables
