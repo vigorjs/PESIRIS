@@ -14,6 +14,7 @@ if(isset($_SESSION['user_id'])){
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Barang Keluar</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
         <link href="css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
@@ -48,6 +49,10 @@ if(isset($_SESSION['user_id'])){
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                         <img class="image" src="assets\img\logo2.png"  width="150px" style="margin: 1px;padding: 0px; color: dark;">
+                        <a class="nav-link" href="profile.php">
+                            <div class="sb-nav-link-icon"><i class="bi bi-people-fill -alt"></i></div>
+                            Profile
+                    </a>
                             <a class="nav-link" href="index.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Stock Barang
@@ -60,9 +65,11 @@ if(isset($_SESSION['user_id'])){
                                 <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
                                 Barang Keluar
                             </a>
-                            <a class="nav-link" href="logout.php">
-                                Log out
-                            </a>
+                            
+                        <a class="nav-link" href="logout.php">
+                        <div class="sb-nav-link-icon"><i class="bi bi-box-arrow-left -alt"></i></div>
+                            Log out
+                        </a>
 
                         </div>
                     </div>

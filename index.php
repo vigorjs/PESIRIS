@@ -16,9 +16,8 @@ if(isset($_SESSION['user_id'])){
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Dashboard - Stock Barang</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="css/styles.css" rel="stylesheet" />
-    <link href="assets/sweet/sweetalert2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
         crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous">
@@ -46,28 +45,15 @@ if(isset($_SESSION['user_id'])){
         <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i>
             <a class="navbar-brand" href="index.php">PESIRIS</a>
         </button>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-        <script>
-<?php
-if(isset($_SESSION['login_success'])){
-    echo "Swal.fire({
-        icon: 'success',
-        title: 'Login Successful!',
-        text: 'Welcome back, $user_email!',
-    });";
-    unset($_SESSION['login_success']); // unset the session to avoid displaying the alert again on page refresh
-}
-
-if(isset($_SESSION['login_failed'])){
-    echo "Swal.fire({
-        icon: 'error',
-        title: 'Login Failed!',
-        text: 'Invalid email or password. Please try again.',
-    });";
-    unset($_SESSION['login_failed']); // unset the session to avoid displaying the alert again on page refresh
-}
-?>
-</script>
+        <?php
+            if(isset($_SESSION['user_id'])){
+        ?>
+        <span class="navbar-text">
+            Hallo, <?= $user_logged['email'] ?>
+        </span>
+        <?php
+            }
+        ?>
     </nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
@@ -76,6 +62,10 @@ if(isset($_SESSION['login_failed'])){
                     <div class="nav">
                         <img class="image" src="assets\img\logo2.png" width="150px"
                             style="margin: 1px;padding: 0px; color: dark;">
+                            <a class="nav-link" href="profile.php">
+                                <div class="sb-nav-link-icon"><i class="bi bi-people-fill -alt"></i></div>
+                                Profile
+                        </a>
                         <a class="nav-link" href="index.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Stock Barang
@@ -89,6 +79,7 @@ if(isset($_SESSION['login_failed'])){
                             Barang Keluar
                         </a>
                         <a class="nav-link" href="logout.php">
+                        <div class="sb-nav-link-icon"><i class="bi bi-box-arrow-left -alt"></i></div>
                             Log out
                         </a>
 
@@ -290,7 +281,6 @@ if(isset($_SESSION['login_failed'])){
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <script src="assets/demo/datatables-demo.js"></script>
-  
 </body>
 
 <!-- The Modal -->
@@ -363,5 +353,7 @@ if(isset($_SESSION['login_failed'])){
         </div>
     </div>
 </div>
+
+
 
 </html>
