@@ -57,7 +57,7 @@ if($gambar==null){
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                        <img class="image" src="assets\img\logo2.png"  width="150px" style="margin: 1px;padding: 0px color:dark;">
+                        <img class="image" src="assets\img\logo2.png"  width="150px" style="margin: 1px;padding: 0px; color:dark;">
                             <a class="nav-link" href="index.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Stock Barang
