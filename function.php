@@ -1,7 +1,7 @@
 <?php
 session_start();
 //koneksi database
-$conn = mysqli_connect('localhost','root','','stockbarang');
+$conn = mysqli_connect('localhost','root','','stock_barang');
 
 //tambah barang baru
 if(isset($_POST['addnewbarang'])){
