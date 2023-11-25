@@ -5,37 +5,26 @@ require 'function.php';
 if(isset($_POST['login'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
-    
-    // cocokin dengan db, mencari datanya ada atau ga
+// cocokin dengan db, mencari datanya ada atau ga
     $cekdatabase = mysqli_query($conn, "SELECT * FROM login where email='$email' and password='$password'");
-    
-    //hitung jumlah data
+//hitung jumlah data
     $hitung = mysqli_num_rows($cekdatabase);
 
-    if($hitung > 0){
+    if($hitung>0){
         $_SESSION['log'] = 'True';
-        $data = mysqli_fetch_array($cekdatabase);
+		$data = mysqli_fetch_array($cekdatabase);
 
         $_SESSION['user_id'] = $data['iduser'];
-		$_SESSION['user_email'] = $data['email'];
-        
-        // Set a session variable for successful login
-        $_SESSION['login_success'] = true;
-        
-        header('location: index.php');
-        exit; // Ensure that no further code is executed after redirecting
-    } else {
-        // Set a session variable for unsuccessful login
-        $_SESSION['login_failed'] = true;
-        
-        header('location: login.php');
-        exit; // Ensure that no further code is executed after redirecting
+        header('location:index.php');
+    } else{
+        header('location:login.php');
     }
-}
+};
 
-if(isset($_SESSION['log'])){
-    header('location: index.php');
-    exit; // Ensure that no further code is executed after redirecting
+if(!isset($_SESSION['log'])){
+
+} else{
+    header('location:index.php');
 }
 ?>
 <!doctype html>
@@ -102,21 +91,6 @@ if(isset($_SESSION['log'])){
 		</div>
 	</div>
 	<!-- END WRAPPER -->
-
-	 <!-- SweetAlert script for unsuccessful login -->
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-	 <script>
-        <?php
-        if (isset($_SESSION['login_failed'])) {
-            echo "Swal.fire({
-                    icon: 'error',
-                    title: 'Login Failed!',
-                    text: 'Invalid email or password. Please try again.',
-                });";
-            unset($_SESSION['login_failed']); // unset the session to avoid displaying the alert again on page refresh
-        }
-        ?>
-    </script>
 </body>
 
 </html>

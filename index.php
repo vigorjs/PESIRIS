@@ -2,8 +2,7 @@
 require 'function.php';
 require 'cek.php';
 if(isset($_SESSION['user_id'])){
-    $user_logged = mysqli_fetch_array((mysqli_query($conn, "SELECT * FROM login WHERE iduser='$_SESSION[user_id]'")));
-    $user_email = $_SESSION['user_email'];   
+    $user_logged = mysqli_fetch_array((mysqli_query($conn, "SELECT * FROM login WHERE iduser='$_SESSION[user_id]'")));   
     }
 ?>
 <!DOCTYPE html>
