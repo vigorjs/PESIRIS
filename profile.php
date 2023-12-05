@@ -1,9 +1,9 @@
 <?php
 require 'function.php';
 require 'cek.php';
-if(isset($_SESSION['user_id'])){
-    $user_logged = mysqli_fetch_array((mysqli_query($conn, "SELECT * FROM login WHERE iduser='$_SESSION[user_id]'")));   
-    }
+if (isset($_SESSION['user_id'])) {
+    $user_logged = mysqli_fetch_array((mysqli_query($conn, "SELECT * FROM login WHERE iduser='$_SESSION[user_id]'")));
+}
 ?>
 
 <!DOCTYPE html>
@@ -18,8 +18,8 @@ if(isset($_SESSION['user_id'])){
     <title>Profile</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="css/styles.css" rel="stylesheet" />
-    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
-        crossorigin="anonymous" />
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <link rel="stylesheet" href="sweetalert2.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -41,13 +41,13 @@ if(isset($_SESSION['user_id'])){
             <a class="navbar-brand" href="index.php">PESIRIS</a>
         </button>
         <?php
-            if(isset($_SESSION['user_id'])){
+        if (isset($_SESSION['user_id'])) {
         ?>
-        <span class="navbar-text">
-            Hallo, <?= $user_logged['email'] ?>
-        </span>
+            <span class="navbar-text">
+                Hallo, <?= $user_logged['email'] ?>
+            </span>
         <?php
-            }
+        }
         ?>
     </nav>
     <div id="layoutSidenav">
@@ -55,8 +55,7 @@ if(isset($_SESSION['user_id'])){
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <img class="image" src="assets\img\logo2.png" width="150px"
-                            style="margin: 1px;padding: 0px; color: dark;">
+                        <img class="image" src="assets\img\logo2.png" width="150px" style="margin: 1px;padding: 0px; color: dark;">
                         <a class="nav-link" href="profile.php">
                             <div class="sb-nav-link-icon"><i class="bi bi-people-fill -alt"></i></div>
                             Profile
@@ -91,44 +90,34 @@ if(isset($_SESSION['user_id'])){
                 </div>
                 <form action="editprofile.php" method="post" enctype="multipart/form-data">
                     <?php if (isset($_GET['error'])) { ?>
-                    <script>
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops...",
-                            text: "<?=$_GET['error']?>"
-                            
+                        <script>
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops...",
+                                text: "<?= $_GET['error'] ?>",
                             });
-                    </script>
-                    <?php }else if(isset($_GET['success'])) { ?>
-                    <script>
-                        Swal.fire({
-                            title: "Berhasil",
-                            text: "<?=$_GET['success']?>",
-                            icon: "success"
-                            });
-                    </script>
+                        </script>
+                    <?php } else if (isset($_GET['success'])) { ?>
+                        <p class="success"><?php echo $_GET['success']; ?></p>
                     <?php  } ?>
 
                     <div class="row">
                         <div class="col-12">
                             <div class="mb-1 px-4 mt-3">
                                 <label for="email" class="mt-4" style="font-size: 20px;">Your Email</label>
-                                <input type="text" name="email" id="email" class="form-control"
-                                    value="<?= $user_logged['email'] ?>" placeholder="Enter Your Email" required readonly>
+                                <input type="text" name="email" id="email" class="form-control" value="<?= $user_logged['email'] ?>" placeholder="Enter Your Email" required readonly>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="mb-1 px-4">
                                 <label for="password" class="mt-4" style="font-size: 20px;">Your Password</label>
-                                <input type="password" name="password" id="password" class="form-control"
-                                    placeholder="Enter Your Password">
+                                <input type="password" name="password" id="password" class="form-control" placeholder="Enter Your Password">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-1 px-4">
                                 <label for="password" class="mt-4" style="font-size: 20px;">Your New Password</label>
-                                <input type="password" name="password_baru" id="password_baru" class="form-control"
-                                    placeholder="Enter Your New Password">
+                                <input type="password" name="password_baru" id="password_baru" class="form-control" placeholder="Enter Your New Password">
                                 <span class="text-info">Fill in if you want to change the password</span>
                             </div>
                         </div>
@@ -136,13 +125,11 @@ if(isset($_SESSION['user_id'])){
                             <div class="mb-1 px-4">
                                 <label for="password" class="mt-4" style="font-size: 20px;">Confirm Your New
                                     Password</label>
-                                <input type="password" name="password_baru2" id="password_baru2" class="form-control"
-                                    placeholder="Confirm Your New Password">
+                                <input type="password" name="password_baru2" id="password_baru2" class="form-control" placeholder="Confirm Your New Password">
                             </div>
                         </div>
                         <div class="text-end align-items-center px-5 mt-3">
-                            <button type="submit" class="btn btn-primary btn-lg" style="font-size: 20px;"
-                                name="action">Save</button>
+                            <button type="submit" class="btn btn-primary btn-lg" style="font-size: 20px;" name="action">Save</button>
                         </div>
 
 
@@ -177,3 +164,4 @@ if(isset($_SESSION['user_id'])){
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <script src="assets/demo/datatables-demo.js"></script>
     <script src="sweetalert2.all.min.js"></script>
+    <script src="sweetalert2.min.js"></script>
