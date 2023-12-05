@@ -9,23 +9,10 @@ if(isset($_POST['daftar'])){
     $query = mysqli_query($conn, "INSERT INTO login SET email='$email', password='$password'");
     if($query){
         $_SESSION['log'] = 'True';
-        // header('location:index.php');
-		echo '<script>
-            document.addEventListener("DOMContentLoaded", function() {
-                Swal.fire({
-                    icon: "success",
-                    title: "Registration Successful",
-                    text: "You have successfully registered!",
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = "index.php";
-                    }
-                });
-            });
-          </script>';
-} else {
-    header('location:register.php');
-}
+        header('location:index.php');
+    } else{
+        header('location:register.php');
+    }
 };
 
 if(!isset($_SESSION['log'])){
@@ -47,13 +34,9 @@ if(!isset($_SESSION['log'])){
 	<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
 	<link rel="stylesheet" href="assets/css/main.css">
 	<link rel="stylesheet" href="assets/css/demo.css">
-	<link rel="stylesheet" href="assets/sweetalert2.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/logo2.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/logo2.png">
-	<script src="./assets/bootstrap.bundle.min.js"></script>
-	<script src="./assets/sweetalert2.all.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body background='assets/img/Screenshot (133).png'>
@@ -101,9 +84,6 @@ if(!isset($_SESSION['log'])){
 		</div>
 	</div>
 	<!-- END WRAPPER -->
-	<!-- <script>
-  Swal.fire("Hello, world!");
-</script> -->
 </body>
 
 </html>
