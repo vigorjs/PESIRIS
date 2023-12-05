@@ -20,6 +20,8 @@ if(isset($_SESSION['user_id'])){
     <link href="css/styles.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
         crossorigin="anonymous" />
+        <link rel="stylesheet" href="sweetalert2.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous">
     </script>
     <style>
@@ -90,9 +92,21 @@ if(isset($_SESSION['user_id'])){
                 </div>
                 <form action="editprofile.php" method="post" enctype="multipart/form-data">
                     <?php if (isset($_GET['error'])) { ?>
-                    <p class="error"><?php echo $_GET['error']; ?></p>
+                    <script>
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "<?= $_GET['error'] ?>",
+                               });
+                    </script>
                     <?php }else if(isset($_GET['success'])) { ?>
-                    <p class="success"><?php echo $_GET['success']; ?></p>
+                        <script>
+                        Swal.fire({
+                            icon: "success",
+                            title: "<?= $_GET['success'] ?>",
+                            text: "",
+                               });
+                    </script>
                     <?php  } ?>
 
                     <div class="row">
@@ -100,7 +114,8 @@ if(isset($_SESSION['user_id'])){
                             <div class="mb-1 px-4 mt-3">
                                 <label for="email" class="mt-4" style="font-size: 20px;">Your Email</label>
                                 <input type="text" name="email" id="email" class="form-control"
-                                    value="<?= $user_logged['email'] ?>" placeholder="Enter Your Email" required readonly>
+                                    value="<?= $user_logged['email'] ?>" placeholder="Enter Your Email" required
+                                    readonly>
                             </div>
                         </div>
                         <div class="col-12">
@@ -124,6 +139,13 @@ if(isset($_SESSION['user_id'])){
                                     Password</label>
                                 <input type="password" name="password_baru2" id="password_baru2" class="form-control"
                                     placeholder="Confirm Your New Password">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-1 px-4">
+                                <label for="photo" class="mt-4" style="font-size: 20px;">Photo</label>
+                                <input type="file" name="photo" id="photo" class="form-control">
+                                <span class="form-text">Upload Photo Here</span>
                             </div>
                         </div>
                         <div class="text-end align-items-center px-5 mt-3">
@@ -162,3 +184,5 @@ if(isset($_SESSION['user_id'])){
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <script src="assets/demo/datatables-demo.js"></script>
+    <script src="js/sweetalert2.all.min.js"></script>
+    <script src="js/sweetalert2.min.js"></script>
