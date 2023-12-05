@@ -140,12 +140,16 @@ if (isset($_SESSION['user_id'])) {
                             </div>
                         </div>
                         <div class="col-12">
-                            <div class="mb-1 px-4">
-                                <label for="photo" class="mt-4" style="font-size: 20px;">Photo</label>
-                                <input type="file" name="photo" id="photo" class="form-control">
-                                <span class="form-text">Upload Photo Here</span>
+                            <<div class="col-12">
+                                <div class="mb-1 px-4">
+                                    <label for="photo" class="mt-4" style="font-size: 20px;">Photo</label>
+                                    <br>
+                                    <img src="assets/img/<?= (!$user_logged['photo']) ? '' : $user_logged['photo'] ?>" alt="" style="max-width: 25%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin-top: 8px;">
+                                    <br>
+                                    <input type="file" name="photo" id="photo" class="form-control" style="margin-top: 8px;" value="<?= $user_logged['photo'] ?>">
+                                    <span class="form-text" style="color: #888; font-size: 14px;">Upload Photo Here</span>
+                                </div>
                             </div>
-                        </div>
                         <div class="text-end align-items-center px-5 mt-3">
                             <button type="submit" class="btn btn-primary btn-lg" style="font-size: 20px;" name="action">Save</button>
                         </div>
