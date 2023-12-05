@@ -2,21 +2,22 @@
 require 'function.php';
 
 // cek login
-if(isset($_POST['login'])){
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-// cocokin dengan db, mencari datanya ada atau ga
-    $cekdatabase = mysqli_query($conn, "SELECT * FROM login where email='$email' and password='$password'");
-//hitung jumlah data
-    $hitung = mysqli_num_rows($cekdatabase);
+if (isset($_POST['login'])) {
+	$email = $_POST['email'];
+	$password = $_POST['password'];
+	// cocokin dengan db, mencari datanya ada atau ga
+	$cekdatabase = mysqli_query($conn, "SELECT * FROM login where email='$email' and password='$password'");
+	//hitung jumlah data
+	$hitung = mysqli_num_rows($cekdatabase);
 
-    if($hitung>0){
-        $_SESSION['log'] = 'True';
+	if ($hitung > 0) {
+		$_SESSION['log'] = 'True';
+		$_SESSION['login_success'] = true;
 		$data = mysqli_fetch_array($cekdatabase);
 
-        $_SESSION['user_id'] = $data['iduser'];
-        header('location:index.php');
-    } else {
+		$_SESSION['user_id'] = $data['iduser'];
+		header('location:index.php');
+	} else {
 		// header('location:login.php');
 		echo '<script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -37,18 +38,16 @@ if(isset($_POST['login'])){
 
 
 
-if(!isset($_SESSION['log'])){
-
-} else{
-    header('location:index.php');
-
+if (!isset($_SESSION['log'])) {
+} else {
+	header('location:index.php');
 }
 ?>
 <!doctype html>
 <html lang="en" class="fullscreen-bg">
 
 <head>
-<title>LOGIN PT. PEGADAIAN</title>
+	<title>LOGIN PT. PEGADAIAN</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -64,7 +63,7 @@ if(!isset($_SESSION['log'])){
 	<script src="./assets/bootstrap.bundle.min.js"></script>
 	<script src="./assets/sweetalert2.all.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-	
+
 </head>
 
 <body background='assets/img/Screenshot (133).png'>
@@ -96,18 +95,18 @@ if(!isset($_SESSION['log'])){
 							</center>
 						</div>
 					</div>
-				  <div class="right">
+					<div class="right">
 						<div class="overlay"></div>
 						<div class="content text text-center">
-						  <img src="assets/img/logo2.png" alt="logo-icon" width="268" height="136">
-						  <img src="assets/img/logoa.png" alt="logo-icon" width="140px" height="140px">
-						  <p>Scan QR untuk cek persediaan barang</p>
+							<img src="assets/img/logo2.png" alt="logo-icon" width="268" height="136">
+							<img src="assets/img/logoa.png" alt="logo-icon" width="140px" height="140px">
+							<p>Scan QR untuk cek persediaan barang</p>
 							<br>
-							
+
 							<h1 class="heading">PEGADAIAN SISTEM INVENTARIS</h1>
 
 						</div>
-				  </div>
+					</div>
 				</div>
 			</div>
 		</div>
