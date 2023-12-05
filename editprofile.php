@@ -27,19 +27,36 @@ if(isset($_POST['password']) && isset($_POST['password_baru']) && isset($_POST['
          exit();
     }else {
         //hashing the password
+        $email = $user_logged['email'];
         $password = ($password);
         $password_baru = ($password_baru);
         $user_id = $_SESSION['user_id'];
+        $photo = $_FILES['photo']['name'];
+        $temp = $_FILES['photo']['tmp_name'];
 
-         
-       $sql = mysqli_query($conn, "UPDATE login SET password= '$password_baru' WHERE iduser='$user_id' AND password='$password'");
-        if($sql){
-            header("location: profile.php?success=Password Updated");
+              
+        if(empty($photo))   {
+            $sql = mysqli_query($conn, "UPDATE login SET password= '$password_baru' WHERE iduser='$user_id' AND password='$password'");
+             if($sql){
+                 header("location: profile.php?success=Password Updated");
+             }else {
+                 header("location: profile.php?error=Incorrect Password!");
+                  exit();
+             }
         }else {
-            header("location: profile.php?error=Incorrect Password!");
-             exit();
+            $sql = mysqli_query($conn, "UPDATE login SET photo= '$photo' WHERE iduser='$user_id'");
+            copy($temp, "assets/img/" . $photo) ; 
+             if($sql){
+                 header("location: profile.php?success=Updated Success");
+             }else {
+                 header("location: profile.php?error=Error");
+                  exit();
+             }
         }
+    
     }
+
+    
 
 }else{
     header("location: profile.php");
