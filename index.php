@@ -3,7 +3,23 @@ require 'function.php';
 require 'cek.php';
 if(isset($_SESSION['user_id'])){
     $user_logged = mysqli_fetch_array((mysqli_query($conn, "SELECT * FROM login WHERE iduser='$_SESSION[user_id]'")));   
-    }
+    
+    echo '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    icon: "success",
+                    title: "Login Berhasil",
+                    text: "Selamat datang kembali, ' . $user_logged['email'] . '!",
+                    showConfirmButton: false,
+                    timer: 4000 
+                });
+            });
+        </script>';
+
+        // Setel kembali variabel sesi agar tidak menunjukkan alert di muatan halaman selanjutnya
+        $_SESSION['login_success'] = false;
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,9 +35,13 @@ if(isset($_SESSION['user_id'])){
     <link href="css/styles.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet"
         crossorigin="anonymous" />
+    <link rel="stylesheet" href="assets/sweetalert2.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous">
     </script>
     <script src="https://unpkg.com/html5-qrcode@2.0.9/dist/html5-qrcode.min.js"></script>
+    <script src="./assets/bootstrap.bundle.min.js"></script>
+    <script src="./assets/sweetalert2.all.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <style>
         .zoomable {
             width: 80px;
@@ -77,10 +97,34 @@ if(isset($_SESSION['user_id'])){
                             <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
                             Barang Keluar
                         </a>
-                        <a class="nav-link" href="logout.php">
+                        <!-- <a class="nav-link" href="logout.php">
                         <div class="sb-nav-link-icon"><i class="bi bi-box-arrow-left -alt"></i></div>
                             Log out
+                        </a> -->
+
+                        <a class="nav-link" href="#" onclick="confirmLogout()">
+                            <div class="sb-nav-link-icon"><i class="bi bi-box-arrow-left -alt"></i></div>
+                                 Log out
                         </a>
+
+                        <script>
+                                function confirmLogout() {
+                            Swal.fire({
+                            title: "Konfirmasi Logout",
+                            text: "Anda yakin ingin logout?",
+                            icon: "question",
+                            showCancelButton: true,
+                            confirmButtonColor: "#3085d6",
+                            cancelButtonColor: "#d33",
+                            confirmButtonText: "Logout"
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                // Jika dikonfirmasi, arahkan ke halaman logout
+                            window.location.href = "logout.php";
+                            }
+                        });
+                    }
+                    </script>
 
                     </div>
                 </div>
@@ -237,6 +281,9 @@ if(isset($_SESSION['user_id'])){
                                                             <div class="modal-footer-center">
                                                                 <button type="submit" class="btn btn-danger"
                                                                     name="hapusbarang">Hapus</button>
+                                                                    <button type="button" class="btn btn-danger" onclick="showDeleteConfirmation('<?=$namabarang;?>', <?=$idb;?>)">
+                                                                        Hapus
+                                                                </button>
                                                             </div>
                                                     </form>
 
