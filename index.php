@@ -3,21 +3,23 @@ require 'function.php';
 require 'cek.php';
 if(isset($_SESSION['user_id'])){
     $user_logged = mysqli_fetch_array((mysqli_query($conn, "SELECT * FROM login WHERE iduser='$_SESSION[user_id]'")));   
-    
-    echo '<script>
-            document.addEventListener("DOMContentLoaded", function() {
-                Swal.fire({
-                    icon: "success",
-                    title: "Login Berhasil",
-                    text: "Selamat datang kembali, ' . $user_logged['email'] . '!",
-                    showConfirmButton: false,
-                    timer: 4000 
-                });
-            });
-        </script>';
+   if(isset($_SESSION['login_success']) && $_SESSION['login_success'] == true) {
 
-        // Setel kembali variabel sesi agar tidak menunjukkan alert di muatan halaman selanjutnya
-        $_SESSION['login_success'] = false;
+       echo '<script>
+               document.addEventListener("DOMContentLoaded", function() {
+                   Swal.fire({
+                       icon: "success",
+                       title: "Login Berhasil",
+                       text: "Selamat datang kembali, ' . $user_logged['email'] . '!",
+                       showConfirmButton: false,
+                       timer: 4000 
+                   });
+               });
+           </script>';
+   
+           // Setel kembali variabel sesi agar tidak menunjukkan alert di muatan halaman selanjutnya
+           $_SESSION['login_success'] = false;
+   } 
 
 }
 ?>

@@ -22,6 +22,7 @@ if(isset($_SESSION['user_id'])){
         crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous">
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         .zoomable {
             width: 80px;
@@ -90,9 +91,22 @@ if(isset($_SESSION['user_id'])){
                 </div>
                 <form action="editprofile.php" method="post" enctype="multipart/form-data">
                     <?php if (isset($_GET['error'])) { ?>
-                    <p class="error"><?php echo $_GET['error']; ?></p>
+                    <script>
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "<?=$_GET['error']?>"
+                            
+                            });
+                    </script>
                     <?php }else if(isset($_GET['success'])) { ?>
-                    <p class="success"><?php echo $_GET['success']; ?></p>
+                    <script>
+                        Swal.fire({
+                            title: "Berhasil",
+                            text: "<?=$_GET['success']?>",
+                            icon: "success"
+                            });
+                    </script>
                     <?php  } ?>
 
                     <div class="row">
@@ -162,3 +176,4 @@ if(isset($_SESSION['user_id'])){
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <script src="assets/demo/datatables-demo.js"></script>
+    <script src="sweetalert2.all.min.js"></script>

@@ -12,6 +12,7 @@ if(isset($_POST['login'])){
 
     if($hitung>0){
         $_SESSION['log'] = 'True';
+		$_SESSION['login_success'] = 'True';
 		$data = mysqli_fetch_array($cekdatabase);
 
         $_SESSION['user_id'] = $data['iduser'];
