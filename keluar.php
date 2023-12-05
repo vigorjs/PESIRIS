@@ -36,9 +36,13 @@ if(isset($_SESSION['user_id'])){
         <?php
             if(isset($_SESSION['user_id'])){
         ?>
+         <div class="d-flex align-items-center ">
             <span class="navbar-text">
                 Hallo, <?= $user_logged['email'] ?>
             </span>
+            <span style="margin-left: 10px;"></span>
+            <img src="assets/img/<?= $user_logged['photo'] ?>" class="avatar rounded-circle" style="width: 50px; height: 50px; object-fit:cover ml-3" alt="">
+        </div>
         <?php
             }
         ?>
