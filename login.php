@@ -17,32 +17,15 @@ if(isset($_POST['login'])){
 
         $_SESSION['user_id'] = $data['iduser'];
         header('location:index.php');
-    } else {
-		// header('location:login.php');
-		echo '<script>
-        document.addEventListener("DOMContentLoaded", function() {
-            Swal.fire({
-                icon: "error",
-                title: "Login Gagal",
-                text: "Invalid email or password",
-                showConfirmButton: false,
-                timer: 2000
-            }).then(function() {
-                window.location.href = "login.php";
-            });
-        });
-      </script>';
-	};
-}
-
-
-
+    } else{
+        header('location:login.php');
+    }
+};
 
 if(!isset($_SESSION['log'])){
 
 } else{
     header('location:index.php');
-
 }
 ?>
 <!doctype html>
@@ -58,14 +41,9 @@ if(!isset($_SESSION['log'])){
 	<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
 	<link rel="stylesheet" href="assets/css/main.css">
 	<link rel="stylesheet" href="assets/css/demo.css">
-	<link rel="stylesheet" href="assets/sweetalert2.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/logo2.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/logo2.png">
-	<script src="./assets/bootstrap.bundle.min.js"></script>
-	<script src="./assets/sweetalert2.all.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-	
 </head>
 
 <body background='assets/img/Screenshot (133).png'>
@@ -114,10 +92,6 @@ if(!isset($_SESSION['log'])){
 		</div>
 	</div>
 	<!-- END WRAPPER -->
-	<!-- <script>
-  Swal.fire("Hello, world!");
-</script> -->
-
 </body>
 
 </html>
