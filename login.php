@@ -56,7 +56,6 @@ if (!isset($_SESSION['log'])) {
 	<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
 	<link rel="stylesheet" href="assets/css/main.css">
 	<link rel="stylesheet" href="assets/css/demo.css">
-	<link rel="stylesheet" href="assets/sweetalert2.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/logo2.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/logo2.png">
@@ -112,10 +111,6 @@ if (!isset($_SESSION['log'])) {
 		</div>
 	</div>
 	<!-- END WRAPPER -->
-	<!-- <script>
-  Swal.fire("Hello, world!");
-</script> -->
-
 </body>
 
 </html>
