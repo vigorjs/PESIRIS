@@ -190,7 +190,7 @@ if (isset($_SESSION['user_id'])) {
                                             $idb = $data['idbarang'];
 
                                             //generate qr
-                                            $url = "https://pesiris.azurewebsites.net/detail.php?id=" . $idb;
+                                            $url = "detail.php?id=" . $idb;
                                             $qrcode = "https://chart.googleapis.com/chart?chs=350x350&cht=qr&chl=" . $url . "&choe=UTF-8";
 
                                             //cek ada gambar atau tidak
@@ -370,7 +370,15 @@ if (isset($_SESSION['user_id'])) {
             <div id="qr-reader"></div>
             <script>
                 function onScanSuccess(decodedText, decodedResult) {
-                    window.location = decodedText;
+                    if(decodedText.includes('detail.php?id=')) {
+                        window.location.href = decodedText;
+                    }else {
+                        Swal.fire({
+            icon: "error",
+            title: "QR Code tidak valid",
+            text: "QR Code yang dipindai tidak ada dalam data."
+                                 });
+                    }
                 }
                 var html5QrcodeScanner = new Html5QrcodeScanner(
                     "qr-reader", {

@@ -144,8 +144,7 @@ if (isset($_SESSION['user_id'])) {
                             </div>
                         </div>
                         <div class="col-12">
-                            <<div class="col-12">
-                                <div class="mb-1 px-4">
+                                                           <div class="mb-1 px-4">
                                     <label for="photo" class="mt-4" style="font-size: 20px;">Photo</label>
                                     <br>
                                     <img src="assets/img/<?= (!$user_logged['photo']) ? '' : $user_logged['photo'] ?>" alt="" style="max-width: 25%; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin-top: 8px;">
