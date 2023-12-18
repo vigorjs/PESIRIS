@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2023 at 09:42 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- Generation Time: Dec 13, 2023 at 03:29 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `stockbarang`
+-- Database: `stock_barang`
 --
 
 -- --------------------------------------------------------
@@ -52,18 +52,41 @@ INSERT INTO `keluar` (`idkeluar`, `idbarang`, `tanggal`, `penerima`, `penyerah`,
 CREATE TABLE `login` (
   `iduser` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL
+  `password` varchar(50) NOT NULL,
+  `photo` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`iduser`, `email`, `password`) VALUES
-(1, 'virgofajar123@gmail.com', '123'),
-(6, 'ifantowus@gmail.com', '123123'),
-(7, 'mayang', '123'),
-(8, 'pundy', '123');
+INSERT INTO `login` (`iduser`, `email`, `password`, `photo`) VALUES
+(1, 'virgofajar123@gmail.com', '123', NULL),
+(6, 'ifantowus@gmail.com', '123123', NULL),
+(7, 'mayang', '123', NULL),
+(8, 'pundy', '123', NULL),
+(9, 'saya1@gmail.com', 'saya', 'profile.jpg'),
+(10, 'saya2@gmail.com', 'saya2', NULL),
+(11, 'coba@gmail.com', 'coba', NULL),
+(12, 'ok@gmail.com', 'okee', NULL),
+(13, 'saya3@gmail.com', 'saya3', NULL),
+(14, 'saya4@gmail.com', 'saya4', NULL),
+(15, 'saya5@gmail.com', 'saya5', NULL),
+(16, 'saa@gmail.com', 'saaa', NULL),
+(17, 'joni@gmail.com', 'joni', NULL),
+(18, 'email@gmail.com', 'email', NULL),
+(19, 'jon@gmail.com', 'joon', NULL),
+(20, 'janc@gmail.com', 'janc', NULL),
+(21, 'asw@gmail.com', 'asww', NULL),
+(22, 'daft@gmail.com', 'daft', NULL),
+(23, 'saaa@gmail.com', 'saaa', NULL),
+(24, 'kont@gmail.com', 'kont', NULL),
+(25, 'regis@gmail.com', 'regis', NULL),
+(26, 'cekk@gmail.com', 'cekk', NULL),
+(27, 'ass@gmail.com', 'ass', NULL),
+(28, 'tes1@gmail.com', 'tes1', NULL),
+(29, 'cokk@gmail.com', 'cokk', NULL),
+(30, 'fukk@gmail.com', 'fukk', NULL);
 
 -- --------------------------------------------------------
 
@@ -110,7 +133,8 @@ INSERT INTO `stock` (`idbarang`, `namabarang`, `deskripsi`, `stock`, `image`) VA
 (65, 'Brosur KUR', 'Marketing Kit', 100, 'b18affd703221cf977be17c0ceb9c55b.png'),
 (67, 'Payung', 'Marketing KIT', 100, '5a682186e49eb3c8677c45eb5c3e76e6.jpeg'),
 (68, 'Kaos', 'Marketing KIT', 60, 'e8046b27af2be091f8d72bdd4b73fd11.jpg'),
-(69, 'Banner', 'Marketing KIT', 15, 'e05a7e26d8ca3e920c7d16f0f99f05fd.jpg');
+(69, 'Banner', 'Marketing KIT', 15, 'e05a7e26d8ca3e920c7d16f0f99f05fd.jpg'),
+(70, 'Helm', 'marketing', 1, '7e6a01a850a9318c7dcf4eab3e957a93.png');
 
 --
 -- Indexes for dumped tables
@@ -156,7 +180,7 @@ ALTER TABLE `keluar`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `masuk`
@@ -168,7 +192,7 @@ ALTER TABLE `masuk`
 -- AUTO_INCREMENT for table `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `idbarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `idbarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- Constraints for dumped tables

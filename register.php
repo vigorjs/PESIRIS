@@ -8,10 +8,35 @@ if(isset($_POST['daftar'])){
 // tambah ke db
     $query = mysqli_query($conn, "INSERT INTO login SET email='$email', password='$password'");
     if($query){
-        $_SESSION['log'] = 'True';
-        header('location:index.php');
+        // header('location:login.php');
+		echo '<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            Swal.fire({
+                icon: "success",
+                title: "Register Berhasil",
+                text: "Silahkan Login",
+                showConfirmButton: true,
+                timer: 2000
+            }).then(function() {
+                window.location.href = "login.php";
+            });
+        });
+      </script>';
     } else{
-        header('location:register.php');
+        // header('location:register.php');
+		echo '<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            Swal.fire({
+                icon: "error",
+                title: "Register Gagal",
+                text: "Gagal Registrasi, mohon coba lagi.",
+                showConfirmButton: false,
+                timer: 2000
+            }).then(function() {
+                window.location.href = "register.php";
+            });
+        });
+      </script>';
     }
 };
 
@@ -37,6 +62,9 @@ if(!isset($_SESSION['log'])){
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/logo2.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/logo2.png">
+	<script src="sweetalert2.min.js"></script>
+	<link rel="stylesheet" href="sweetalert2.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body background='assets/img/Screenshot (133).png'>

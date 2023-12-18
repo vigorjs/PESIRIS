@@ -11,6 +11,7 @@ if(isset($_POST['addnewbarang'])){
     $ambilsemuadatastock = mysqli_query($conn, "select * from stock");
     $data = mysqli_fetch_array($ambilsemuadatastock);
 
+
     //soal gambar
     $allowed_extension = array('png','jpg','jpeg','heic',);
     $nama = $_FILES['file']['name'];//ngambil nama file gambar
@@ -35,42 +36,84 @@ if(isset($_POST['addnewbarang'])){
 
                     $addtotable = mysqli_query($conn,"Insert Into stock (namabarang, deskripsi, stock, image) values('$namabarang','$deskripsi','$stock','$image')");
                     if($addtotable){
-                        header('location:index.php');
+                        // header('location:index.php');
+                        echo '<script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                            Swal.fire({
+                            icon: "success",
+                            title: "Berhasil Tambah Barang",
+                            showConfirmButton: true,
+                            timer: 2000
+                                }).then(function() {
+                                window.location.href = "index.php";
+                                });
+                                });
+                            </script>';
                     } 
                 }else{
                     //kalau filenya lebih dari 15mb
-                    echo '
-                    <script>
-                        alert("Ukuran file terlalu besar!!!");
-                        window.location.href="index.php";
-                    </script>
-                    ';
+                    echo '<script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                            Swal.fire({
+                            icon: "error",
+                            title: "File Terlalu Besar",
+                            showConfirmButton: true,
+                            timer: 2000
+                                }).then(function() {
+                                window.location.href = "index.php";
+                                });
+                                });
+                            </script>';
                 }
         }else {
             $allowed_extension = array('png','jpg','jpeg','heic',"");
             if($ekstensi == ""){
                 $addtotable = mysqli_query($conn,"Insert Into stock (namabarang, deskripsi, stock) values('$namabarang','$deskripsi','$stock')");
                 if($addtotable){
-                    header('location:index.php');
+                    // header('location:index.php');
+                    echo '<script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                    Swal.fire({
+                    icon: "success",
+                    title: "Berhasil Tambah Barang",
+                    showConfirmButton: true,
+                    timer: 2000
+                        }).then(function() {
+                        window.location.href = "index.php";
+                        });
+                        });
+                    </script>';
                 }
             } else{
                 //kalau filenya bukan jpg/png
-                echo '
-                <script>
-                    alert("File harus PNG / JPG !!!");
-                    window.location.href="index.php";
-                </script>
-                ';
+                echo '<script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                            Swal.fire({
+                            icon: "error",
+                            title: "File Bukan jpg/png",
+                            showConfirmButton: true,
+                            timer: 2000
+                                }).then(function() {
+                                window.location.href = "index.php";
+                                });
+                                });
+                            </script>';
             }
         }
     }else {
         //jika sudah ada
-        echo '
-        <script>
-            alert("Nama barang sudah terdaftar");
-            window.location.href="index.php";
-        </script>
-        ';
+        echo '<script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                            Swal.fire({
+                            icon: "error",
+                            title: "Barang Sudah Ada",
+                            showConfirmButton: true,
+                            timer: 2000
+                                }).then(function() {
+                                window.location.href = "index.php";
+                                });
+                                });
+                            </script>';
     }
 }
         
@@ -91,10 +134,33 @@ if(isset($_POST['barangmasuk'])){
     $addtomasuk = mysqli_query($conn, "insert into masuk (idbarang, keterangan, penyerah, qty) values('$barangnya', '$penerima', '$penyerah', '$qty')");
     $updatestockmasuk = mysqli_query($conn,"update stock set stock='$tambahkanstocksekarangdenganquantity' where idbarang='$barangnya'");
     if($addtomasuk&&$updatestockmasuk){
-        header('location:masuk.php');
+        // header('location:masuk.php');
+        echo '<script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                            Swal.fire({
+                            icon: "success",
+                            title: "Stok Barang Berhasil Ditambah",
+                            showConfirmButton: true,
+                            timer: 2000
+                                }).then(function() {
+                                window.location.href = "masuk.php";
+                                });
+                                });
+                            </script>';
     } else{
-        echo "GAGAL";
-        header('location:masuk.php');
+        // header('location:masuk.php');
+        echo '<script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                            Swal.fire({
+                            icon: "error",
+                            title: "Gagal",
+                            showConfirmButton: true,
+                            timer: 2000
+                                }).then(function() {
+                                window.location.href = "masuk.php";
+                                });
+                                });
+                            </script>';
     }
 }
 
@@ -112,12 +178,36 @@ if(isset($_POST['barangkeluar'])){
     $tambahkanstocksekarangdenganquantity = $stocksekarang-$qty;
 
     if($qty>$stocksekarang){
-        header('location:keluar.php?error=overqty');
+        // header('location:keluar.php?error=overqty');
+        echo '<script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                            Swal.fire({
+                            icon: "error",
+                            title: "Perhatian! Stock Barang yang Dipilih Kurang!!",
+                            showConfirmButton: true,
+                            timer: 2000
+                                }).then(function() {
+                                window.location.href = "keluar.php?error=overqty";
+                                });
+                                });
+                            </script>';
         } else{
         $addtokeluar = mysqli_query($conn, "insert into keluar (idbarang, penerima, qty, penyerah) values('$barangnya', '$penerima', '$qty', '$penyerah')");
         $updatestockmasuk = mysqli_query($conn,"update stock set stock='$tambahkanstocksekarangdenganquantity' where idbarang='$barangnya'");
         if($addtokeluar&&$updatestockmasuk){
-            header('location:keluar.php');
+            // header('location:keluar.php');
+            echo '<script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                            Swal.fire({
+                            icon: "success",
+                            title: "Berhasil Ambil Barang",
+                            showConfirmButton: true,
+                            timer: 2000
+                                }).then(function() {
+                                window.location.href = "keluar.php";
+                                });
+                                });
+                            </script>';
         }
     }
 }
