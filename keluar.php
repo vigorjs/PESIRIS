@@ -39,7 +39,7 @@ if(isset($_SESSION['user_id'])){
         <?php
             if(isset($_SESSION['user_id'])){
         ?>
-         <div class="d-flex align-items-center ">
+         <div class="d-none d-md-flex align-items-center">
             <span class="navbar-text">
                 Hallo, <?= $user_logged['email'] ?>
             </span>
@@ -55,11 +55,13 @@ if(isset($_SESSION['user_id'])){
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                        <img class="image" src="assets\img\logo2.png"  width="150px" style="margin: 1px;padding: 0px; color: dark;">
-                        <a class="nav-link" href="profile.php">
-                            <div class="sb-nav-link-icon"><i class="bi bi-people-fill -alt"></i></div>
-                            Profile
-                    </a>
+                            <a href="index.php">
+                                <img class="image" src="assets\img\logo2.png"  width="150px" style="margin: 1px;padding: 0px; color: dark;">
+                            </a>
+                            <a class="nav-link" href="profile.php">
+                                <div class="sb-nav-link-icon"><i class="bi bi-people-fill -alt"></i></div>
+                                Profile
+                            </a>
                             <a class="nav-link" href="index.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Stock Barang
@@ -106,31 +108,33 @@ if(isset($_SESSION['user_id'])){
                             <div class="card-body">
 
                             <?php
-                            //ambil nilai variabel error
-                            if (isset($_GET['error']))
-                            {
-                            $error=$_GET['error'];
-                            }
-                            else
-                            {
-                            $error="";
-                            }
-                            //pesan error
-                            $pesan="";
-                            if ($error=="overqty"){
-                                $ambilsemuadatastock = mysqli_query($conn, "select * from stock s, keluar k where s.idbarang = k.idbarang");
-                                while($data = mysqli_fetch_array($ambilsemuadatastock)){
-                                    $idbarangnya = $data['idbarang'];
-                                
-                            ?>
-                            <div class="alert alert-danger alert-dismissible" id="notif<?=$idk;?>">
-                            <button type="button" class="close" data-dismiss="alert">&times;</button>
-                            <strong>Perhatian!</strong> Stock Barang yang Dipilih Kurang!!
-                           </div>
+                                //ambil nilai variabel error
+                                if (isset($_GET['error'])) {
+                                    $error = $_GET['error'];
+                                } else {
+                                    $error = "";
+                                }
+                                //pesan error
+                                $pesan = "";
+                                if ($error == "overqty") {
+                                    $ambilsemuadatastock = mysqli_query($conn, "select * from stock s, keluar k where s.idbarang = k.idbarang");
+                                    $alertsDisplayed = false; // Variable to track whether alerts are displayed
 
-                           <?php
-                            }}
-                           ?>
+                                    while ($data = mysqli_fetch_array($ambilsemuadatastock)) {
+                                        $idbarangnya = $data['idbarang'];
+
+                                        if (!$alertsDisplayed) {
+                                            ?>
+                                            <div class="alert alert-danger alert-dismissible" id="notif<?=$idk;?>">
+                                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                                <strong>Perhatian!</strong> Stock Barang yang Dipilih Kurang!!
+                                            </div>
+                                            <?php
+                                            $alertsDisplayed = true; // Set the flag to true after displaying the alert
+                                        }
+                                    }
+                                }
+                            ?>
 
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

@@ -45,7 +45,7 @@ if (isset($_SESSION['user_id'])) {
         <?php
         if (isset($_SESSION['user_id'])) {
         ?>
-        <div class="d-flex align-items-center ">
+        <div class="d-none d-md-flex align-items-center ">
             <span class="navbar-text">
                 Hallo, <?= $user_logged['email'] ?>
             </span>
@@ -61,7 +61,9 @@ if (isset($_SESSION['user_id'])) {
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <img class="image" src="assets\img\logo2.png" width="150px" style="margin: 1px;padding: 0px; color: dark;">
+                        <a href="index.php">
+                            <img class="image" src="assets\img\logo2.png" width="150px" style="margin: 1px;padding: 0px; color: dark;">
+                        </a>
                         <a class="nav-link" href="profile.php">
                             <div class="sb-nav-link-icon"><i class="bi bi-people-fill -alt"></i></div>
                             Profile

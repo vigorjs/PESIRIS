@@ -66,7 +66,7 @@ if (isset($_SESSION['user_id'])) {
         <?php
         if (isset($_SESSION['user_id'])) {
         ?>
-            <div class="d-flex align-items-center ">
+        <div class="d-none d-md-flex align-items-center ">
             <span class="navbar-text">
                 Hallo, <?= $user_logged['email'] ?>
             </span>
@@ -82,7 +82,9 @@ if (isset($_SESSION['user_id'])) {
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <img class="image" src="assets\img\logo2.png" width="150px" style="margin: 1px;padding: 0px; color: dark;">
+                        <a href="index.php">
+                            <img class="image" src="assets\img\logo2.png"  width="150px" style="margin: 1px;padding: 0px; color:dark;">
+                        </a>                        
                         <a class="nav-link" href="profile.php">
                             <div class="sb-nav-link-icon"><i class="bi bi-people-fill -alt"></i></div>
                             Profile
@@ -150,20 +152,52 @@ if (isset($_SESSION['user_id'])) {
                         </button>
 
                         <div class="card-body">
-                            <?php
-                            $ambildatastock = mysqli_query($conn, "select * from stock where stock < 1");
-                            while ($fetch = mysqli_fetch_array($ambildatastock)) {
+                        <?php
+                            $ambildatastockearly = mysqli_query($conn, "SELECT * FROM stock");
+
+                            $allAlerts = ''; // Accumulate all alerts here
+
+                            while ($fetch = mysqli_fetch_array($ambildatastockearly)) {
                                 $namabarang = $fetch['namabarang'];
+                                $qty = $fetch['stock'];
+                                $kategori = $fetch['kategori'];
 
-                            ?>
-                                <div class="alert alert-danger alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                    <strong>Perhatian!</strong> Stock <?= $namabarang; ?> telah habis!
-                                </div>
+                                $alertType = '';
+                                $alertMessage = '';
 
-                            <?php
+                                // Set threshold values based on category
+                                $pembanding = 0;
+                                if ($kategori == 'Marketing Kit') {
+                                    $pembanding = $qty <= 10;
+                                } else if ($kategori == 'Brosur') {
+                                    $pembanding = $qty <= 100;
+                                } else if ($kategori == 'Kendaraan') {
+                                    $pembanding = $qty <= 1;
+                                } else if ($kategori == 'ATK') {
+                                    $pembanding = $qty <= 50;
+                                }
+
+                                // Check conditions and set alert
+                                if ($qty < 1) {
+                                    $alertType = 'danger';
+                                    $alertMessage = "Stock $namabarang telah habis!";
+                                } else if ($qty > 0 && $pembanding) {
+                                    $alertType = 'warning';
+                                    $alertMessage = "Stock $namabarang hampir habis! (kurang dari stok minimal $kategori)";
+                                }
+
+                                // Accumulate alerts
+                                if (!empty($alertType) && !empty($alertMessage)) {
+                                    $allAlerts .= '<div class="alert alert-' . $alertType . ' alert-dismissible">
+                                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                            <strong>Perhatian!</strong> ' . $alertMessage . '
+                                        </div>';
+                                }
                             }
-                            ?>
+
+                            // Display all accumulated alerts
+                            echo $allAlerts;
+                        ?>
 
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -397,7 +431,4 @@ if (isset($_SESSION['user_id'])) {
         </div>
     </div>
 </div>
-
-
-
 </html>
