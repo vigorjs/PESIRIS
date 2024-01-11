@@ -60,13 +60,13 @@ if (isset($_SESSION['user_id'])) {
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
-                    <div class="nav">
+                <div class="nav">
                         <a href="index.php">
-                            <img class="image" src="assets\img\logo2.png" width="150px" style="margin: 1px;padding: 0px; color: dark;">
-                        </a>
-                        <a class="nav-link" href="profile.php">
-                            <div class="sb-nav-link-icon"><i class="bi bi-people-fill -alt"></i></div>
-                            Profile
+                            <img class="image" src="assets\img\logo2.png"  width="150px" style="margin: 1px;padding: 0px; color:dark;">
+                        </a>                        
+                        <a class="nav-link" href="home.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
+                            Home
                         </a>
                         <a class="nav-link" href="index.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
@@ -80,11 +80,33 @@ if (isset($_SESSION['user_id'])) {
                             <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
                             Barang Keluar
                         </a>
-
-                        <a class="nav-link" href="logout.php">
+                        <a class="nav-link" href="profile.php">
+                            <div class="sb-nav-link-icon"><i class="bi bi-people-fill -alt"></i></div>
+                            Profile
+                        </a>
+                        <a class="nav-link" href="#" onclick="confirmLogout()">
                             <div class="sb-nav-link-icon"><i class="bi bi-box-arrow-left -alt"></i></div>
                             Log out
                         </a>
+
+                        <script>
+                            function confirmLogout() {
+                                Swal.fire({
+                                    title: "Konfirmasi Logout",
+                                    text: "Anda yakin ingin logout?",
+                                    icon: "question",
+                                    showCancelButton: true,
+                                    confirmButtonColor: "#3085d6",
+                                    cancelButtonColor: "#d33",
+                                    confirmButtonText: "Logout"
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        // Jika dikonfirmasi, arahkan ke halaman logout
+                                        window.location.href = "logout.php";
+                                    }
+                                });
+                            }
+                        </script>
 
                     </div>
                 </div>

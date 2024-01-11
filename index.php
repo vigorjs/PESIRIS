@@ -81,13 +81,13 @@ if (isset($_SESSION['user_id'])) {
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
-                    <div class="nav">
+                <div class="nav">
                         <a href="index.php">
                             <img class="image" src="assets\img\logo2.png"  width="150px" style="margin: 1px;padding: 0px; color:dark;">
                         </a>                        
-                        <a class="nav-link" href="profile.php">
-                            <div class="sb-nav-link-icon"><i class="bi bi-people-fill -alt"></i></div>
-                            Profile
+                        <a class="nav-link" href="home.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
+                            Home
                         </a>
                         <a class="nav-link" href="index.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
@@ -101,11 +101,10 @@ if (isset($_SESSION['user_id'])) {
                             <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
                             Barang Keluar
                         </a>
-                        <!-- <a class="nav-link" href="logout.php">
-                        <div class="sb-nav-link-icon"><i class="bi bi-box-arrow-left -alt"></i></div>
-                            Log out
-                        </a> -->
-
+                        <a class="nav-link" href="profile.php">
+                            <div class="sb-nav-link-icon"><i class="bi bi-people-fill -alt"></i></div>
+                            Profile
+                        </a>
                         <a class="nav-link" href="#" onclick="confirmLogout()">
                             <div class="sb-nav-link-icon"><i class="bi bi-box-arrow-left -alt"></i></div>
                             Log out
@@ -147,7 +146,7 @@ if (isset($_SESSION['user_id'])) {
                             </button>
                             <a href="export.php" class="btn btn-info">Laporan</a>
                         </div>
-                        <button type="button" class="btn btn-outline-primary mt-3" data-toggle="modal" data-target="#scanner">
+                        <button type="button" class="btn btn-lg btn-outline-primary mx-3 mt-3" data-toggle="modal" data-target="#scanner">
                             Scan Barang
                         </button>
 
@@ -200,7 +199,7 @@ if (isset($_SESSION['user_id'])) {
                         ?>
 
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="dataTable" width="100%" >
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -219,6 +218,7 @@ if (isset($_SESSION['user_id'])) {
                                         $i = 1;
                                         while ($data = mysqli_fetch_array($ambilsemuadatastock)) {
                                             $namabarang = $data['namabarang'];
+                                            $kategori = $data['kategori'];
                                             $deskripsi = $data['deskripsi'];
                                             $stock = $data['stock'];
                                             $idb = $data['idbarang'];
@@ -240,13 +240,12 @@ if (isset($_SESSION['user_id'])) {
                                             <tr>
                                                 <td><?= $i++; ?></td>
                                                 <td><?= $img; ?></td>
-                                                <td><strong><a href="detail.php?id=<?= $idb; ?>"><?= $namabarang; ?></a></strong>
-                                                </td>
-                                                <td><?= $deskripsi; ?></td>
+                                                <td><strong><a href="detail.php?id=<?= $idb; ?>"><?= $namabarang; ?></a></strong></td>
+                                                <td><span>Kategori : <?= $kategori ?></span><br><?= $deskripsi; ?></td>
                                                 <td><?= $stock; ?></td>
                                                 <td><img src="<?= $qrcode; ?>" class="zoomable"></td>
                                                 <td>
-                                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit<?= $idb; ?>"> <i class="fa fa-edit"> </i></#>
+                                                    <button type="button" class="btn btn-warning mb-1" data-toggle="modal" data-target="#edit<?= $idb; ?>"> <i class="fa fa-edit"> </i></#>
                                                     </button>
                                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete<?= $idb; ?>"> <i class="fa fa-trash"> </i></#>
                                                     </button>
@@ -369,7 +368,16 @@ if (isset($_SESSION['user_id'])) {
                 <div class="modal-body">
                     <input type='text' name='namabarang' placeholder="Nama Barang" class='form-control' required>
                     <br>
-                    <input type="text" name="deskripsi" placeholder="Kategori" class="form-control" required>
+                    <select id="pilihan" name="kategori" class="form-control" required>
+                        <option value="" disabled selected>Select Kategori</option>
+                        <option value="Marketing Kit">Marketing Kit</option>
+                        <option value="ATK">ATK</option>
+                        <option value="Brosur">Brosur</option>
+                        <option value="Kendaraan">Kendaraan</option>
+                        <option value="Lain - lain">Lain - lain</option>
+                    </select>
+                    <br>
+                    <input type="text" name="deskripsi" placeholder="Deskripsi" class="form-control" required>
                     <br>
                     <input type="number" name="stock" placeholder="Stock" class="form-control" required>
                     <br>

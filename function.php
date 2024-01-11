@@ -8,6 +8,7 @@ if(isset($_POST['addnewbarang'])){
     $namabarang = $_POST['namabarang'];
     $deskripsi = $_POST['deskripsi'];
     $stock = $_POST['stock'];
+    $kategori = $_POST['kategori'];
     $ambilsemuadatastock = mysqli_query($conn, "select * from stock");
     $data = mysqli_fetch_array($ambilsemuadatastock);
 
@@ -34,7 +35,7 @@ if(isset($_POST['addnewbarang'])){
                 if($ukuran<15000000){
                     move_uploaded_file($file_tmp,'assets/img/'.$image);
 
-                    $addtotable = mysqli_query($conn,"Insert Into stock (namabarang, deskripsi, stock, image) values('$namabarang','$deskripsi','$stock','$image')");
+                    $addtotable = mysqli_query($conn,"Insert Into stock (namabarang, deskripsi, kategori, stock, image) values('$namabarang','$deskripsi','$kategori','$stock','$image')");
                     if($addtotable){
                         // header('location:index.php');
                         echo '<script>
@@ -68,7 +69,7 @@ if(isset($_POST['addnewbarang'])){
         }else {
             $allowed_extension = array('png','jpg','jpeg','heic',"");
             if($ekstensi == ""){
-                $addtotable = mysqli_query($conn,"Insert Into stock (namabarang, deskripsi, stock) values('$namabarang','$deskripsi','$stock')");
+                $addtotable = mysqli_query($conn,"Insert Into stock (namabarang, deskripsi, kategori, stock) values('$namabarang','$deskripsi','$kategori','$stock')");
                 if($addtotable){
                     // header('location:index.php');
                     echo '<script>
