@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy PHP app to Azure Web App - pesiris
+name: Build and deploy ASP.Net Core app to Azure Web App - pesiris
 
 on:
   push:
@@ -11,37 +11,31 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v1
         with:
-          php-version: '8.1'
+          dotnet-version: '6.0.x'
+          include-prerelease: true
 
-      - name: Check if composer.json exists
-        id: check_files
-        uses: andstor/file-existence-action@v1
-        with:
-          files: 'composer.json'
+      - name: Build with dotnet
+        run: dotnet build --configuration Release
 
-      - name: Run composer install if composer.json exists
-        if: steps.check_files.outputs.files_exists == 'true'
-        run: composer validate --no-check-publish && composer install --prefer-dist --no-progress
-
-      - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+      - name: dotnet publish
+        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
-          name: php-app
-          path: release.zip
+          name: .net-app
+          path: ${{env.DOTNET_ROOT}}/myapp
 
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     needs: build
     environment:
       name: 'Production'
@@ -51,16 +45,13 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
-          name: php-app
-
-      - name: Unzip artifact for deployment
-        run: unzip release.zip
+          name: .net-app
       
-      - name: 'Deploy to Azure Web App'
-        uses: azure/webapps-deploy@v2
+      - name: Deploy to Azure Web App
         id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
         with:
           app-name: 'pesiris'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9AC3781A4349483F8300078C2B3FFD76 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_89C7CDCBF44B4EFDA8322BBECAA51650 }}
