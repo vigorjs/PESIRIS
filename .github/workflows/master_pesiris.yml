@@ -62,5 +62,5 @@ jobs:
         with:
           app-name: 'pesiris'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C4C7B3DF43FC4371A3044F9D6CC72E5A }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9945C2A408B14D2CA11B5146D4A7549A }}
           package: .
